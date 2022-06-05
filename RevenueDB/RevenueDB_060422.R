@@ -48,7 +48,7 @@ if (month(revenue_date) >= 10) {
 }
 
 if (month(revenue_date) == 3) {
-  jpy_yr <- yr -1
+  jpy_yr <- yr - 1
 } else {
   jpy_yr <- yr
 }
@@ -147,7 +147,7 @@ raw_list <- url %>%
   str_subset(paste0('q',jpy_yr,'_sup_en')) %>%
   str_c(paste0(url_unique_str,".net"), .) %>% unique()
 
-for (i in 1:length(raw_list)) {
+for (i in seq_along(raw_list)) {
   raw_pdf <- pdf_text(raw_list[i])
   pdf.text<-unlist(raw_pdf)
   pdf.text<-tolower(raw_pdf)
@@ -176,7 +176,7 @@ for (i in 1:length(raw_list)) {
   }
 }
 
-for (i in 1:length(raw_list)) {
+for (i in seq_along(raw_list)) {
   raw_pdf <- pdf_text(rev(raw_list)[i])
   profile <- raw_pdf[rev(page)[i]]
   profile <- strsplit(profile, "\n")
